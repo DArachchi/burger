@@ -1,5 +1,5 @@
 var express = require("express");
-
+var bodyParser = require("body-parser");
 var router = express.Router();
 
 // Import the model (burger.js) to use its database functions.
@@ -17,7 +17,7 @@ router.get("/", function(req, res) {
 });
 
 router.post("/", function(req, res) {
-  burger.insertOne(["burger_name"], [req.body.name], function() {
+  burger.insertOne(["burger_name", "devoured"], [req.body.name,false], function() {
     res.redirect("/");
   });
 });

@@ -7,6 +7,9 @@ var mysql = require("mysql");
 var app = express();
 var PORT = process.env.PORT || 8080;
 
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.static(process.cwd() + "/assets"));
+
 // Override with POST having ?_method=DELETE
 app.use(methodOverride("_method"));
 
